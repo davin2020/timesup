@@ -1,2 +1,2 @@
 # timesup
-Create some online Timers
+Create some online Timers, that you can customise
