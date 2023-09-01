@@ -1,20 +1,126 @@
 
+const SOFT_GONG = 'sounds/soft-gong-sound-effect.mp3';
+const DEEP_GONG = 'sounds/deep-gong-hit-sound-effect.mp3';
+const PING = 'sounds/ping-sound-effect.mp3';
+
+
 function addTimerX() {
 	console.log("addTimerX");
 	// let newTask = document.getElementById("newTask");
 	// let newTaskText = newTask.value;
 
-	let newTimeValue = document.getElementById("newTime");
-	let newFrequencyValue = document.getElementById("newFrequency");
-	console.log(newTimeValue.value);
-	console.log(newFrequencyValue.value);
+	let newTimeValue = document.getElementById("newTime").value;
+	let newFrequencyValue = document.getElementById("newFrequency").value;
+	let timeAmount = newTimeValue * 1000;
+	console.log(newTimeValue);
+	console.log(newFrequencyValue);
+	console.log(timeAmount);
 
+	// how to combine starting the timer (adn rendering it on the webpage) and playing the sound, into 1 function call
+	startTimer(newTimeValue);
+
+	// setTimeout(playSound(SOFT_GONG), timeAmount);
+	// setTimeout(playSound2, timeAmount);
+	// this is correct format for passing arg of SOFT_GONG to playSound(), after waiting for timeAmount seconds
+	setTimeout(playSound, timeAmount, SOFT_GONG);
+
+	// setTimeout();
+	// playSound(DEEP_GONG);
+	// playSound(SOFT_GONG);
+}
+
+function startTimer3() {
+	console.log("startTimer3");
+}
+
+// function playSound2() {
+// 	console.log("playSound PING");
+// 	let beat = new Audio(PING);
+// 	// Play the beat
+// 	beat.play();
+// }
+
+function playSound(soundFile) {
+	console.log("playSound");
+	let beat = new Audio(soundFile);
+	// Play the beat
+	beat.play();
+
+	// Pause/stop the beat
+	// beat.pause();
+
+	// Reload the beat (back to the start)
+	// beat.load();
+}
+
+//whyis this being executed straight away, instead of when the button is clicked
+
+// setTimeout(function(){
+//     console.log("setTimeout Hello World");
+//     playSound(SOFT_GONG);
+//     console.log("... just played the sound");
+// }, 2000);
+
+
+document.querySelector('button').addEventListener('click', function() {
+  var context = new AudioContext();
+  // Setup all nodes
+  // ...
+  let state = context.state;
+  console.log("state: " + state)
+  context.resume();
+  console.log("state: " + state)
+});
+
+
+// Now you may be thinking, "why not just pass the parameters directly to the function?"
+
+// This is because if you pass the parameters directly like this:
+
+// setTimeout(greeting("Nathan", "Software developer"), 3000);
+// Then JavaScript will immediately execute the function without waiting, 
+// because you're passing a function call and not a function reference as the first parameter.
+
+
+// TIMER APP CODE - https://gomakethings.com/how-to-play-a-sound-with-javascript/
+
+// Get the #app element
+let app = document.querySelector('#app');
+
+// Track the count
+// let count = 5;
+
+function startTimer(count) {
+	console.log("startTimer");
+
+	// Run a callback function once every second
+	let timer = setInterval(function () {
+
+		// Reduce count by 1
+		count--;
+
+		// Update the UI
+		if (count > 0) {
+			app.textContent = count;
+		} else {
+			app.textContent = '⏰';
+			clearInterval(timer);
+		}
+
+	}, 1000);
+	// playSound(PING);
 }
 
 
 
 
 //  new stuff abotu timesr is above here
+
+
+
+
+
+
 
 let taskArray = [
 ]
