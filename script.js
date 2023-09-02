@@ -5,28 +5,78 @@ const PING = 'sounds/ping-sound-effect.mp3';
 
 
 function addTimerX() {
-	console.log("addTimerX");
+	console.log("addTimerX()");
 	// let newTask = document.getElementById("newTask");
 	// let newTaskText = newTask.value;
 
 	let newTimeValue = document.getElementById("newTime").value;
 	let newFrequencyValue = document.getElementById("newFrequency").value;
 	let timeAmount = newTimeValue * 1000;
+	let repeatFreqSeconds = newFrequencyValue * 1000;
 	console.log(newTimeValue);
 	console.log(newFrequencyValue);
-	console.log(timeAmount);
+	console.log('timeAmount ' + timeAmount);
+	console.log('repeatFreqSeconds ' + repeatFreqSeconds);
+	let mSecondsToRunFor = timeAmount * newFrequencyValue; // eg 5000 x 3
+	let mSecondsToRunForMinusOne = timeAmount * (newFrequencyValue -1); // eg 5000 x 3
+	console.log('mSecondsToRunFor ' + mSecondsToRunFor);
+	console.log('mSecondsToRunForMinusOne ' + mSecondsToRunForMinusOne);
+
+		//sat - another option  - totally not working, keeps on going and keeps on sounded alarm noise
+		//pp.textContent = newTimeValue;
+			// setTimeout(playSound, timeAmount, SOFT_GONG);
+			// setInterval(countDown, count, SOFT_GONG);
+		//setInterval(countDown, newTimeValue);
+
+	let maxLoops = newFrequencyValue > 0 ? newFrequencyValue : 1;
+	console.log('maxLoops: ' + maxLoops);
+	// for (let i = 1; i <= maxLoops; i++) { 
+	// 	console.log('loop i' + i);
+	// 	//this makes them all play at the same time!
+	// 	// how to combine starting the timer (adn rendering it on the webpage) and playing the sound, into 1 function call
+	// 	// sat - this works, but tryin to refactor
+	// 	finishSound = SOFT_GONG;
+	// 	startTimer(newTimeValue, finishSound);
+	// }
+
+	//sat - another way of repeating stuff - new timer starts BEFORE old one has finished, need to pause btwen
+	finishSound = SOFT_GONG;
+	//this works ok and counts down from newTimeValue seconds, and repeats after 5secs, 
+	// BUT thers is now a 5sec delay BEFORE the first call/execution - run 5 times, repeat every 5 secs
+	// and the delay becomes 30secs if u want a 30 sec timer !!
+	//start one timer straight away, since timerId has a delay of timeAmount BEFORE it will start
+	startTimer(newTimeValue, finishSound);
+	let newTimeValueMinusOne = newTimeValue - 1;
+	let timeAmountMinusOne = timeAmount - 1000;
+	console.log('newTimeValueMinusOne ' + newTimeValueMinusOne);
+	console.log('timeAmountMinusOne ' + timeAmountMinusOne);
+
+	let timerId = setInterval(() => startTimer(newTimeValueMinusOne, finishSound), timeAmountMinusOne);
+	// this is BAD as it repeasts every 3 seconds!
+	// let timerId = setInterval(() => startTimer(newTimeValue, finishSound), repeatFreqSeconds);
+	// after 15 seconds stop ie 5secs x 3 lots = seems to be out of sync w countdowm timer itself 
+	setTimeout(() => { 
+		clearInterval(timerId); console.log('stop clearInterval'); 
+	}, mSecondsToRunForMinusOne);
+
 
 	// how to combine starting the timer (adn rendering it on the webpage) and playing the sound, into 1 function call
-	startTimer(newTimeValue);
+	// sat - this works, but tryin to refactor
+	//finishSound = SOFT_GONG;
+	//startTimer(newTimeValue, finishSound);
+	
 
 	// setTimeout(playSound(SOFT_GONG), timeAmount);
 	// setTimeout(playSound2, timeAmount);
+	
 	// this is correct format for passing arg of SOFT_GONG to playSound(), after waiting for timeAmount seconds
-	setTimeout(playSound, timeAmount, SOFT_GONG);
+	// dont need to call this here as setInterval updates dom every second, and once finished can play a sound!
+	//setTimeout(playSound, timeAmount, SOFT_GONG);
 
 	// setTimeout();
 	// playSound(DEEP_GONG);
 	// playSound(SOFT_GONG);
+	console.log("stopped function addTimerX()");
 }
 
 function startTimer3() {
@@ -41,7 +91,7 @@ function startTimer3() {
 // }
 
 function playSound(soundFile) {
-	console.log("playSound");
+	console.log("playSound()");
 	let beat = new Audio(soundFile);
 	// Play the beat
 	beat.play();
@@ -90,10 +140,33 @@ let app = document.querySelector('#app');
 // Track the count
 // let count = 5;
 
-function startTimer(count) {
-	console.log("startTimer");
 
-	// Run a callback function once every second
+//refactor as coutndown method - totaly not working
+function countDown(count) {
+	console.log("countDown");
+	// app.textContent = count;
+	count--;
+
+	// Update the UI
+	if (count > 0) {
+		app.textContent = count;
+	} else {
+		app.textContent = '⏰';
+		clearInterval(countDown);
+		playSound(PING);
+		console.log('played countdown ping sound');
+	}
+
+}
+
+
+
+// this function works wel lenough for now
+function startTimer(count, sound) {
+	console.log("startTimer(), count " + count + ", sound " + sound);
+	app.textContent = count;
+
+	// Run a callback function once every second, to update the count down timer by 1 second
 	let timer = setInterval(function () {
 
 		// Reduce count by 1
@@ -102,9 +175,12 @@ function startTimer(count) {
 		// Update the UI
 		if (count > 0) {
 			app.textContent = count;
+			console.log("countdown: " + count)
 		} else {
 			app.textContent = '⏰';
 			clearInterval(timer);
+			playSound(sound);
+			console.log('played THE sound');
 		}
 
 	}, 1000);
