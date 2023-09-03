@@ -17,10 +17,15 @@ function addTimerX() {
 	console.log(newFrequencyValue);
 	console.log('timeAmount ' + timeAmount);
 	console.log('repeatFreqSeconds ' + repeatFreqSeconds);
-	let mSecondsToRunFor = timeAmount * newFrequencyValue; // eg 5000 x 3
-	let mSecondsToRunForMinusOne = timeAmount * (newFrequencyValue -1); // eg 5000 x 3
+	let mSecondsToRunFor = timeAmount * newFrequencyValue ; // eg 5000 x 3 - x60 turn into minutes
+	let mSecondsToRunForMinusOne = timeAmount * (newFrequencyValue -1) ; // eg 5000 x 3 - x60 turn into minutes
 	console.log('mSecondsToRunFor ' + mSecondsToRunFor);
 	console.log('mSecondsToRunForMinusOne ' + mSecondsToRunForMinusOne);
+
+	let MinutesToRunFor = timeAmount * newFrequencyValue * 60; // eg 5000 x 3 - x60 turn into minutes
+	let MinutesToRunForMinusOne = timeAmount * (newFrequencyValue -1) * 60 ; // eg 5000 x 3 - x60 turn into minutes
+	console.log('MinutesToRunFor x60 ' + MinutesToRunFor);
+	console.log('MinutesToRunForMinusOne x60 ' + MinutesToRunForMinusOne);
 
 		//sat - another option  - totally not working, keeps on going and keeps on sounded alarm noise
 		//pp.textContent = newTimeValue;
@@ -45,7 +50,14 @@ function addTimerX() {
 	// BUT thers is now a 5sec delay BEFORE the first call/execution - run 5 times, repeat every 5 secs
 	// and the delay becomes 30secs if u want a 30 sec timer !!
 	//start one timer straight away, since timerId has a delay of timeAmount BEFORE it will start
-	startTimer(newTimeValue, finishSound);
+	//startTimer(newTimeValue, finishSound);
+
+	//try and start timer with minute value not seconds value
+	let minutesTimeValue = newTimeValue * 60;
+	startTimer(minutesTimeValue, finishSound);
+
+
+
 	let newTimeValueMinusOne = newTimeValue - 1;
 	let timeAmountMinusOne = timeAmount - 1000;
 	console.log('newTimeValueMinusOne ' + newTimeValueMinusOne);
@@ -161,9 +173,11 @@ function countDown(count) {
 
 
 
-// this function works wel lenough for now
+// this function works wel lenough for now - count is really the number of seconds to run for eg 120 seconds, but i dont want to display ita s such!
 function startTimer(count, sound) {
-	console.log("startTimer(), count " + count + ", sound " + sound);
+	console.log("startTimer(), count aka newTimeValueMinusOne " + count + ", sound " + sound);
+	// console.log("newTimeValueMinusOne: " + newTimeValueMinusOne);
+
 	app.textContent = count;
 
 	// Run a callback function once every second, to update the count down timer by 1 second
@@ -176,6 +190,23 @@ function startTimer(count, sound) {
 		if (count > 0) {
 			app.textContent = count;
 			console.log("countdown: " + count)
+
+			//new counter to render w mins & secs -  code stolen from here - https://stackoverflow.com/questions/37096367/how-to-convert-seconds-to-minutes-and-hours-in-javascript
+			// let minutes = count % 60;
+			// maybe this doesnt have to be calculated every time??
+			//this DOES work but isnt pretty
+			var divisor_for_minutes = count % (60 * 60);
+    		var minutes = Math.floor(divisor_for_minutes / 60);
+
+    		var divisor_for_seconds = divisor_for_minutes % 60;
+    		var seconds = Math.ceil(divisor_for_seconds);
+
+			console.log("new minutes: " + minutes)
+			// let seconds = count;
+			document.getElementById("currentMins").innerHTML = minutes + "m " 
+			document.getElementById("CurrentSecs").innerHTML = seconds + "s"
+			
+			
 		} else {
 			app.textContent = '⏰';
 			clearInterval(timer);
