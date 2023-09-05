@@ -30,37 +30,46 @@
 
 
 			    <form action="javascript:addTimerX();" method="post">
-			    	<label for="newTime">Play finish sound after x seconds :</label>
+			    	<label for="newTime">Play a finish chime after this number of Minutes :</label>
 			    	<!-- <label for="newTime">Repeat Time every x Minutes :</label> -->
 			        <input class="input_field" type="number" name="newTime" id="newTime">
 			        <br>
 
-			        <label for="newFrequency">Repeat the timer & finish sound for y times :</label>
+			        <label for="newFrequency">Repeat the above Timer for this many times :</label>
 			        <!-- <label for="newFrequency">Repeat for the next y Hours :</label> -->
 			        <input class="input_field" type="number" name="newFrequency" id="newFrequency">
 			       
-			        <br>
-			        <button class="button_add_task" id="addTimerButton" type="submit">Start Timer</button>
+			        <br><br>
+			        <button class="button_start_timer" id="addTimerButton" type="submit">Start Timer</button>
 			    </form>
 
 			</div>
 
 
 		 	<br><br><br>
-		    <!-- how to set this value to start with dynamically -->
-			<div id="app" aria-live="polite">Countdown</div>
+		    
 
 			<br>
-			<div>
-				<span id="currentMins">00</span>: <span id="CurrentSecs">00</span>
+			<div class="countdown_container">
+				<span class="currentTimeColor" id="currentMins">00</span>
+				<span class="currentTimeColor"> : </span>
+				<span class="currentTimeColor" id="CurrentSecs">00</span>
 			</div>
-			<div id="currentMins">CurrentMins</div>
-			<div id="CurrentSecs">CurrentSecs</div>
 
 			<br>
-			<div>
+			<div id="finish_icon"class="icon_style">x</div>
+
+			<!-- how to set this value to start with dynamically -->
+			<div id="app" aria-live="polite" class="icon_style" hidden="true">Countdown</div>
+
+			<!-- <br>
+			<div id="currentMins">CurrentMins</div>
+			<div id="CurrentSecs">CurrentSecs</div> -->
+
+			<br>
+			<!-- <div>
 		    	<span id="hour">00</span>:<span id="minute">00</span>:<span id="second">00</span>:<span id="millisecond">000</span>
-		  	</div>
+		  	</div> -->
 
 		<!-- new stuf above here -->
 		<br><br>
