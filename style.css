@@ -12,8 +12,8 @@ body {
 	color: black;
 	background-size: contain;
 	background-repeat: repeat;
-	background-color: #9bbbf2;
-	/* other blues, darker 7ca8f4 lighter 9bbbf2*/
+	background-color: #ffffe0; 
+	/* other blues, darker 7ca8f4 lighter 9bbbf2 -- timer yellow e2dda3 vl ight yeello ffffe0 */
 }
 
 label {
@@ -23,8 +23,31 @@ label {
 	font-weight: 600;
 	/*to help w mobinle screen MQ*/
 	margin:	10px;
+	width: 40%;
 }
 
+.currentTimeColor {
+	color: blue;
+	font-weight: bold;
+	font-size: 3rem;
+}
+
+.countdown_container {
+	display: block;
+  	justify-content: center;
+	/*border: 2px solid purple;*/
+	/*padding: 10px;*/
+	border: 4px solid purple;
+	margin: 20px;
+	padding: 20px;
+}
+
+
+.icon_style {
+	font-size: 3rem;
+}
+
+/* review css below here from cloned project */
 .disclaimer {
 	font-style: italic;
 	font-size: 1rem;
@@ -122,12 +145,12 @@ RENAEMD it later nad its now working ok! */
 	/*margin-bottom: 20px;*/
 }
 
-.button_add_task {
+.button_start_timer {
 	padding: 10px 20px;
 	margin: 10px;
 	font-size: 1.3rem;
 	font-weight: 600;
-	background-color: white;
+	background-color: #dbeafe;
 	border-radius: 	20px;
 }
 
