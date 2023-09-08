@@ -1,0 +1,112 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	font-family: verdanna, 'Arial', sans-serif;
+	font-size: 1.2rem;
+	line-height: 1.4rem;
+	color: black;
+	background-size: contain;
+	background-repeat: repeat;
+	background-color: #ffffe0; 
+}
+
+label {
+	display: inline-block;
+	text-align: left;
+	width: 120px;
+	font-weight: 600;
+	/*to help w mobile screen MQ*/
+	margin:	10px;
+	width: 40%;
+}
+
+.timer_color {
+	color: #663399;
+	font-weight: bold;
+	font-size: 3rem;
+}
+
+.countdown_container {
+	display: block;
+  	justify-content: center;
+  	margin: auto;
+	border: 4px solid #663399;
+	padding: 20px;
+	margin-top: 30px;
+	min-height: 250px;
+	max-width: 500px;
+}
+
+h1 {
+	text-align: center;
+	font-size: 2.8rem;
+	line-height: 2.5rem;
+	color: rebeccapurple;
+	margin-bottom: 20px;
+}
+@media screen and (max-width: 600px) {
+	h1 {
+		font-size: 2.4rem;
+		margin: 10px 0;
+	}
+}
+@media screen and (max-width: 450px) {
+	h1 {
+		font-size: 2rem;
+		margin: 10px 0;
+	}
+}
+
+.main_container {
+	margin: 0 20px;
+	width: auto;
+	text-align: center;
+}
+
+.form_container {
+	display: flex;
+  	justify-content: center;
+	margin-bottom: 10px;
+}
+
+.button_timers {
+	padding: 10px 20px;
+	margin: 10px;
+	font-size: 1.3rem;
+	font-weight: 600;
+	border-radius: 	20px;
+	font
+}
+
+.start_color {
+	background-color: #7bc96f;
+	color: black;
+}
+
+.stop_color {
+	background-color: #db4a13;
+	color: white;
+}
+
+.clock_icon {
+	font-size:	 3rem;
+	padding-top: 10px;
+}
+
+.footer {
+	text-align: center;
+	font-size: 0.9rem;
+	color: blacks;
+	margin-top: 30px;
+	margin-bottom: 10px;
+}
+@media screen and (max-width: 450px) {
+	.footer {
+		font-size: 0.7rem;
+		margin-top: 30px;
+	}
+}

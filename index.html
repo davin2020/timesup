@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-GB" xml:lang="en-GB" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" href="style.css">
+	<script type="text/javascript" src="script.js"></script>
+	<title>Time's Up! Timer</title>
+</head>
+
+<body>
+
+	<div class="main_container">
+	<h1>Time's Up! Timer</h1>
+		<div class="form_container">
+			<div>
+				<label for="js-time">Time (Minutes):</label>
+				<input class="input_field"  type="number" id="js-time" value="10" />
+
+				<label for="js-repeat">Repeat:</label>
+				<input class="input_field"  type="number" id="js-repeat" value="5" />
+
+				<br><br>
+				<input class="button_timers stop_color" type="submit" id="js-stop" value="Stop" />
+				<input class="button_timers start_color" type="submit" id="js-start" value="Start" />
+			</div>
+		</div>
+		
+		<div class="countdown_container">
+			<p class="timer_color" id="js-output">00:00</p>
+			<p class="clock_icon" id="js-end-icon"> </p>
+		</div>
+
+	</div>
+
+	<div class="footer">
+    	<p>Website Created by <a href="https://davin2020.github.io/">Davin</a></p>
+	</div>
+
+</body>
+</html>
