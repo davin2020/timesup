@@ -50,12 +50,19 @@ function addTimerX() {
 	// BUT thers is now a 5sec delay BEFORE the first call/execution - run 5 times, repeat every 5 secs
 	// and the delay becomes 30secs if u want a 30 sec timer !!
 	//start one timer straight away, since timerId has a delay of timeAmount BEFORE it will start
+	// DAVIN removed this as its called using seconds, not minutes
 	//startTimer(newTimeValue, finishSound);
 
 	//try and start timer with minute value not seconds value
 	let minutesTimeValue = newTimeValue * 60;
 	startTimer(minutesTimeValue, finishSound);
-
+	
+	//mon added this 
+	let minutesTimeValueMinusOne = newTimeValue - 1;
+	let minutesTimeAmountMinusOne = newTimeValue * 1000;
+	// let timeAmount = newTimeValue * 1000;
+	console.log('NEW minutesTimeValueMinusOne ' + minutesTimeValueMinusOne);
+	console.log('NEW minutesTimeAmountMinusOne ' + minutesTimeAmountMinusOne);
 
 
 	let newTimeValueMinusOne = newTimeValue - 1;
@@ -63,7 +70,13 @@ function addTimerX() {
 	console.log('newTimeValueMinusOne ' + newTimeValueMinusOne);
 	console.log('timeAmountMinusOne ' + timeAmountMinusOne);
 
-	let timerId = setInterval(() => startTimer(newTimeValueMinusOne, finishSound), timeAmountMinusOne);
+	//TODO recalculate newTimeValueMinusOne to be based on minutesTimeValue Minus One - for when input time is in minutes
+	// BUGS timer is not getting repeated!
+	let timerId = setInterval(() => startTimer(minutesTimeValueMinusOne, finishSound), minutesTimeAmountMinusOne);
+
+	//prev calc was ok for when input time was in seconds - this works
+	//let timerId = setInterval(() => startTimer(newTimeValueMinusOne, finishSound), timeAmountMinusOne);
+	
 	// this is BAD as it repeasts every 3 seconds!
 	// let timerId = setInterval(() => startTimer(newTimeValue, finishSound), repeatFreqSeconds);
 	// after 15 seconds stop ie 5secs x 3 lots = seems to be out of sync w countdowm timer itself 
@@ -188,7 +201,8 @@ function startTimer(count, sound) {
 
 		// Update the UI
 		if (count > 0) {
-			app.textContent = count;
+			// hide the orignal count down timer for now
+			// app.textContent = count;
 			console.log("countdown: " + count)
 
 			//new counter to render w mins & secs -  code stolen from here - https://stackoverflow.com/questions/37096367/how-to-convert-seconds-to-minutes-and-hours-in-javascript
@@ -201,14 +215,16 @@ function startTimer(count, sound) {
     		var divisor_for_seconds = divisor_for_minutes % 60;
     		var seconds = Math.ceil(divisor_for_seconds);
 
-			console.log("new minutes: " + minutes)
+			console.log("new minutes: " + minutes);
 			// let seconds = count;
-			document.getElementById("currentMins").innerHTML = minutes + "m " 
-			document.getElementById("CurrentSecs").innerHTML = seconds + "s"
+			document.getElementById("currentMins").innerHTML = minutes;
+			document.getElementById("CurrentSecs").innerHTML = seconds;
 			
 			
 		} else {
-			app.textContent = '⏰';
+			//app.textContent = '⏰';
+			finish_icon.textContent = '⏰';
+			document.getElementById("CurrentSecs").innerHTML = 0;
 			clearInterval(timer);
 			playSound(sound);
 			console.log('played THE sound');
