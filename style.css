@@ -2,7 +2,6 @@
 	box-sizing: border-box;
 }
 
-/*colors yellow text f3f370 */
 body {
 	padding: 0;
 	margin: 0;
@@ -13,7 +12,6 @@ body {
 	background-size: contain;
 	background-repeat: repeat;
 	background-color: #ffffe0; 
-	/* other blues, darker 7ca8f4 lighter 9bbbf2 -- timer yellow e2dda3 vl ight yeello ffffe0 */
 }
 
 label {
@@ -21,13 +19,13 @@ label {
 	text-align: left;
 	width: 120px;
 	font-weight: 600;
-	/*to help w mobinle screen MQ*/
+	/*to help w mobile screen MQ*/
 	margin:	10px;
 	width: 40%;
 }
 
-.currentTimeColor {
-	color: blue;
+.timer_color {
+	color: #663399;
 	font-weight: bold;
 	font-size: 3rem;
 }
@@ -35,43 +33,14 @@ label {
 .countdown_container {
 	display: block;
   	justify-content: center;
-	/*border: 2px solid purple;*/
-	/*padding: 10px;*/
-	border: 4px solid purple;
-	margin: 20px;
+  	margin: auto;
+	border: 4px solid #663399;
 	padding: 20px;
+	margin-top: 30px;
+	min-height: 250px;
+	max-width: 500px;
 }
 
-
-.icon_style {
-	font-size: 3rem;
-}
-
-/* review css below here from cloned project */
-.disclaimer {
-	font-style: italic;
-	font-size: 1rem;
-}
-
-.taskArea {
-	margin: 0 20px;
-	width: auto;
-	text-align: center;
-}
-/* try container class isntead? */
-
-
-.battlegrid {
-	border: 2px dotted black;
-}
-
-.input_field{
-	padding: 5px;
-	font-size: 1.2rem;
-}
-
-
-/*colors yellow text f3f370 - change h1 text if snow option is on */
 h1 {
 	text-align: center;
 	font-size: 2.8rem;
@@ -92,226 +61,52 @@ h1 {
 	}
 }
 
-h2 {
-	text-align: center;
-	/*font-weight: 600;*/
-	font-size: 2.2rem;
-	color: rebeccapurple;
-}
-@media screen and (max-width: 450px) {
-	h2 {
-		font-size: 1.8rem;
-		margin: 15px 0;
-		line-height: 1.8rem;
-	}
-}
-
-/*might help w alsing label  input button on form ?
-justify-content: space-evenly;
-*/
-
-p {
-	text-align: center;
-}
-
-
-/*align center? */
-.button_load_tasks {
-	padding: 20px 40px;
-	margin: 10px;
-	font-size: 1.3rem;
-	font-weight: 600;
-	background-color: white;
-	border-radius: 	20px;
-	margin-bottom: 20px;
-}
-@media screen and (max-width: 650px)  {}
-	.button_load_tasks {
-		padding: 10px 20px;
-		margin: 0px;
-	}
-}
-
-/*refactor this later*/
-/*BUG this style is no longer being noticed? why?
-RENAEMD it later nad its now working ok! */
-.button_add_tasks {
-	padding: 10px 20px;
-	margin: 10px;
-	font-size: 1.3rem;
-	font-weight: 600;
-	background-color: white;
-	border-radius: 	20px;
-	/*margin-bottom: 20px;*/
-}
-
-.button_start_timer {
-	padding: 10px 20px;
-	margin: 10px;
-	font-size: 1.3rem;
-	font-weight: 600;
-	background-color: #dbeafe;
-	border-radius: 	20px;
-}
-
-/*thihs exists in script file */
-.button_task {
-	min-width: 200px;
-	min-height: 100px;
-	padding: 10px;
-	/*margin: 5px;*/
-	font-size: 1.4rem;
-	font-weight: 600;
-	background-color: lightyellow;
-}
-.button_task:hover {
-	cursor: pointer;
-}
-
-/*.button_grid_task {
-	min-width: 200px;
-	min-height: 100px;
-	padding: 10px;
-	font-size: 1.4rem;
-	font-weight: 600;
-	background-color: lightyellow;
-}*/
-
-
-.button_container_shuffle_tasks {
-	text-align: center;
-}
-
-
-
-@media screen and (max-width: 500px) {
-	button {
-		padding: 10px;
-		font-size: 1rem;
-	}
-}
-@media screen and (max-width: 400px) {
-	button {
-		padding: 5px 10px;
-	}
-}
-
-/* yellow light f2f28c */
-
-
-
-/*when width is UNDER 550 ie max=under, and min=over 
-@media screen and (max-width: 1000px) 
-had many Quote MQs here
-
-*/
-
-
-.font_courgette {
-	font-family: 'Courgette';
-	font-size: 3.5rem;
-}
-
-.font_merienda {
-	font-family: 'Merienda One';
-}
-
-.font_oleo {
-	font-family: 'Oleo Script';
-	font-size: 3.5rem;
-	letter-spacing: 
-}
-
-div {
-	/*border: 1px dashed green;*/
-}
-
-/*no used for tasks?*/
-/* need to center containner within body!*/
-.container {
+.main_container {
+	margin: 0 20px;
 	width: auto;
-	margin: 10px;
-	display: flex;
-	position: relative;
-	justify-content: center;
-	/*border: 1px dashed red;*/
-	text-align: center;
-	padding: 10px;
-	/*height: 500px;*/
-}
-@media screen and (max-width: 700px) {
-	.container {
-		margin: 0;
-		padding: 0;
-	}
-}
-
-.main {
 	text-align: center;
 }
 
 .form_container {
 	display: flex;
   	justify-content: center;
-	/*border: 2px solid purple;*/
-	/*padding: 10px;*/
+	margin-bottom: 10px;
 }
 
-.frame_tasks {
-	border: 2px solid purple;
-	margin-bottom: 40px;
-}
-
-.frame_all_tasks {
-	/* cant restrict text too much */
-	/*width: 40%;*/
-	margin: 0 auto;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 200px;
-	flex-wrap: wrap;
-	/*margin-bottom: 20px;*/
-}
-
-/* static grid of 5x3 */
-.parent_grid_all_tasks {
-	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-	grid-template-rows: repeat(3, 1fr);
-	grid-column-gap: 0px;
-	grid-row-gap: 0px;
-	border: 2px solid purple;
+.button_timers {
+	padding: 10px 20px;
 	margin: 10px;
-	/* need below so child task items dont overflow parent - but hidden means u cant see the task text! */
-	overflow: auto;
-	min-height: 320px;
+	font-size: 1.3rem;
+	font-weight: 600;
+	border-radius: 	20px;
+	font
 }
-@media screen and (max-width: 750px) {
-	.parent_grid_all_tasks {
-		grid-template-columns: repeat(3, 1fr);
-		grid-template-rows: repeat(5, 1fr);
-		margin: 5px;
-	}
+
+.start_color {
+	background-color: #7bc96f;
+	color: black;
 }
-@media screen and (max-width: 500px) {
-	.parent_grid_all_tasks {
-		grid-template-columns: repeat(2, 1fr);
-		grid-template-rows: repeat(7, 1fr);
-		margin: 5px;
-	}
+
+.stop_color {
+	background-color: #db4a13;
+	color: white;
+}
+
+.clock_icon {
+	font-size:	 3rem;
+	padding-top: 10px;
 }
 
 .footer {
 	text-align: center;
-	font-size: 1rem;
-	color: rebeccapurple;
-	margin-top: 20px;
+	font-size: 0.9rem;
+	color: blacks;
+	margin-top: 30px;
 	margin-bottom: 10px;
 }
 @media screen and (max-width: 450px) {
 	.footer {
-		font-size: 0.8rem;
-		margin-top: 10px;
+		font-size: 0.7rem;
+		margin-top: 30px;
 	}
 }
