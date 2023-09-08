@@ -1,2 +1,2 @@
 # timesup
-Create some online Timers, that you can customise
+Created an online Timer that can repeat itelf 
