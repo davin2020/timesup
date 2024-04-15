@@ -67,10 +67,10 @@
 		output_text += ':';
 		output_text += output_seconds.toString().padStart(2, '0');
 
-		if (timer_repeat > 0) {
-			// output_text += ' (' + timer_repeat + ')'; // show repeat amount for debugging
-			console.log("timer_repeat: " + timer_repeat)
-		}
+		// if (timer_repeat > 0) {
+		// 	// output_text += ' (' + timer_repeat + ')'; // show repeat amount for debugging
+		// 	console.log("timer_repeat: " + timer_repeat)
+		// }
 
 		// new sprint info here - is it being updated every second??
 		sprint_text = "Sprint " + current_sprint + " of " + total_sprints;
